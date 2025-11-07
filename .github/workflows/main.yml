@@ -8,7 +8,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-22.04
-
+    environment: docker
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
