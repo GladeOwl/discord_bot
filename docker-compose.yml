@@ -1,0 +1,5 @@
+services:
+  bot:
+    image: gladeowl/battalion_bot
+    build: .
+    container_name: battalion_bot
