@@ -1,9 +1,12 @@
+import logging
 import hikari
 import lightbulb
 
 from typing import Mapping
 from commands import perms
 from core import CLIENT
+
+LOGGER = logging.getLogger("bot")
 
 @CLIENT.register
 class ReplaceRole(
@@ -64,8 +67,11 @@ async def edit_role(roleA, roleB, ctx: lightbulb.Context, remove: bool) -> None:
             await member.remove_role(roleA)
 
     if remove:
-        await ctx.respond(f"{roleA.mention} role was replaced with the {roleB.mention} role for {processed_members} member(s).", ephemeral=True)
+        message = f"By {ctx.member} : {roleA.mention} role was replaced with the {roleB.mention} role for {processed_members} member(s)."
+        logging.info(message)
+        await ctx.respond(message, ephemeral=True)
     else:
-        message = f"{roleB.mention} role was given to {processed_members} member(s) that also had the {roleA.mention} role."
+        message = f"By {ctx.member} : {roleB.mention} role was given to {processed_members} member(s) that also had the {roleA.mention} role."
         message = message + f" {members_with_role} member(s) already had the role." if members_with_role > 0 else ""
+        logging.info(message)
         await ctx.respond(message, ephemeral=True)
