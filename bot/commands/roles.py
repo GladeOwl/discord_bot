@@ -37,6 +37,7 @@ class AddRole(
     async def invoke(self, ctx: lightbulb.Context) -> None:
         await edit_role(self.roleA, self.roleB, ctx, remove=False)
 
+
 async def edit_role(roleA, roleB, ctx: lightbulb.Context, remove: bool) -> None:
     member: hikari.Member | None = ctx.member
     if member is None:
@@ -67,11 +68,11 @@ async def edit_role(roleA, roleB, ctx: lightbulb.Context, remove: bool) -> None:
             await member.remove_role(roleA)
 
     if remove:
-        message = f"By {ctx.member} : {roleA.mention} role was replaced with the {roleB.mention} role for {processed_members} member(s)."
+        message = f"[Mass Role Replace] {roleA.mention} role was replaced with the {roleB.mention} role for {processed_members} member(s). | By {ctx.member}."
         logging.info(message)
         await ctx.respond(message, ephemeral=True)
     else:
-        message = f"By {ctx.member} : {roleB.mention} role was given to {processed_members} member(s) that also had the {roleA.mention} role."
+        message = f"[Mass Role Add] {roleB.mention} role was given to {processed_members} member(s) that also had the {roleA.mention} role | By {ctx.member}."
         message = message + f" {members_with_role} member(s) already had the role." if members_with_role > 0 else ""
         logging.info(message)
         await ctx.respond(message, ephemeral=True)
