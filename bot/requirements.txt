@@ -1,3 +1,4 @@
 hikari==2.4.0
 python-dotenv
 hikari-lightbulb
+hikari-miru
