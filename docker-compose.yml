@@ -3,3 +3,5 @@ services:
     image: gladeowl/battalion_bot
     build: .
     container_name: battalion_bot
+    volumes:
+      - bot.log:/bot/bot.log
