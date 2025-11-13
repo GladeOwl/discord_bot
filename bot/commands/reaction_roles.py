@@ -34,7 +34,8 @@ class CreateReactionRole(
             embed.set_footer(self.footer)
 
         view = ReactionRoleButtonView(self.role, self.role_add_message, self.role_remove_message)
-        await BOT.rest.create_message(self.channel, embed=embed, components=view)
+        message: hikari.Message = await BOT.rest.create_message(self.channel, embed=embed, components=view)
+        view.save_local_data(message)
         MIRU.start_view(view)
 
         await ctx.respond("Message was been posted.", ephemeral=True)
