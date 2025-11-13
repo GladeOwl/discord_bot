@@ -3,6 +3,7 @@ import logging
 
 from core import BOT, CLIENT
 from commands import *
+from modules import *
 
 LOGGER = logging.getLogger("bot")
 logging.basicConfig(
