@@ -7,7 +7,7 @@ from commands import *
 from modules import *
 
 LOGGER = logging.getLogger()
-file_handler = logging.FileHandler("bot.log", encoding="utf-8")
+file_handler = logging.FileHandler("./bot.log", encoding="utf-8")
 formatter = logging.Formatter("[%(asctime)s] (%(filename)s) %(levelname)s :: %(message)s")
 file_handler.setFormatter(formatter)
 LOGGER.addHandler(file_handler)

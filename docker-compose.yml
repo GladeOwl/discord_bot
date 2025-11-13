@@ -4,4 +4,4 @@ services:
     build: .
     container_name: battalion_bot
     volumes:
-      - bot.log:/bot/bot.log
+      - ./bot.log:/bot/bot.log
