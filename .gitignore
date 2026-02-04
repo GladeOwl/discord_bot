@@ -4,3 +4,4 @@ pyright*
 *__pycache__
 reaction_roles.json
 bot.log
+.vscode
