@@ -61,7 +61,7 @@ class ReactionRoleButtonView(miru.View):
 async def start_views(event: hikari.StartedEvent) -> None:
     data: list[dict] | None = helper.read_json_list(DATA_FILE)
     if data is None:
-        logging.error(f"No data was able to be retrieved for Miru Views. Peristence failed.")
+        logging.error("No data was able to be retrieved for Miru Views. Peristence failed.")
         return
     
     processed_views: int = 0

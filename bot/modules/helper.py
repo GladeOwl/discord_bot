@@ -2,6 +2,8 @@ import logging
 import json
 import pathlib
 
+import lightbulb
+
 LOGGER = logging.getLogger("bot")
 
 def write_to_json_list(file_name: str, data: dict) -> None:
@@ -21,8 +23,6 @@ def write_to_json_list(file_name: str, data: dict) -> None:
 
     logging.info(f"[JSON] Successfully wrote to {file_name}.")    
 
-
-
 def read_json_list(file_name) -> list[dict] | None:
     file_path = pathlib.Path(file_name)
 
@@ -33,3 +33,7 @@ def read_json_list(file_name) -> list[dict] | None:
     with open(file_path, "r+", encoding="utf-8") as jsonf:
         json_data = json.load(jsonf)
         return json_data
+
+async def create_ctx_error(ctx: lightbulb.Context, error: str):
+    logging.error(error)
+    await ctx.respond(error, ephemeral=True)
